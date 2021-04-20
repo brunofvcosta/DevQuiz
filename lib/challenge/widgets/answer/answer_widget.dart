@@ -55,6 +55,7 @@ class AnswerWidget extends StatelessWidget {
                       isSelected ? _selectedTextStyleRight : AppTextStyles.body,
                 ),
               ),
+              // comentario
               Container(
                 width: 24,
                 height: 24,
