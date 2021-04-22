@@ -1,3 +1,4 @@
+import 'package:devquiz/challenge/challenge_page.dart';
 import 'package:devquiz/core/app_colors.dart';
 import 'package:devquiz/home/home_controller.dart';
 import 'package:devquiz/home/widgets/appbar/app_bar_widget.dart';
@@ -18,7 +19,6 @@ class _HomePageState extends State<HomePage> {
   final controller = HomeController();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller.getUser();
     controller.getQuizzes();
@@ -68,11 +68,19 @@ class _HomePageState extends State<HomePage> {
                     crossAxisCount: 2,
                     children: controller.quizzes!
                         .map((e) => QuizCardWidget(
-                              title: e.title,
-                              percent: e.questionAnswered / e.questions.length,
-                              completed:
-                                  "${e.questionAnswered}/${e.questions.length}",
-                            ))
+                            title: e.title,
+                            percent: e.questionAnswered / e.questions.length,
+                            completed:
+                                "${e.questionAnswered}/${e.questions.length}",
+                            onTap: () {
+                              //Navigator, ao clicar abre a pagina que está no builder, sempre PUSH porque empilha.
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ChallengePage(
+                                            questions: e.questions,
+                                          )));
+                            }))
                         .toList(),
                   ),
                 ),
