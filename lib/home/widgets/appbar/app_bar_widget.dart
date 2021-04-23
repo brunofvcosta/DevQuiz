@@ -44,7 +44,11 @@ class AppBarWidget extends PreferredSize {
                     ),
                   ),
                   Align(
-                      alignment: Alignment(0.0, 1.0), child: ScoreCardWidget())
+                      //Abaixo dividiu o score por 100 porque ele é do tipo int, pra passar ele pra double
+                      alignment: Alignment(0.0, 1.0),
+                      child: ScoreCardWidget(
+                        percent: user.score / 100,
+                      ))
                 ],
               ),
             ));
